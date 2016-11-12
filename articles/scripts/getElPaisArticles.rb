@@ -67,6 +67,12 @@ links.each do |link|
     end
 end
 
+# Create the output folder if necessary
+dirname = "../data/"
+unless File.directory?(dirname)
+  FileUtils.mkdir_p(dirname)
+end
+
 # Save the articles to a json file
 File.open("../data/articles_elpais.json", "w") do |f|
     f.write(articles.to_json)

@@ -1,4 +1,5 @@
 require 'wikipedia'
+require 'fileutils'
 
 # This script gets summaries from random wikipedia articles
 
@@ -24,6 +25,12 @@ for i in 0..number_of_articles-1 do
     article[:link] = doc.fullurl
     article[:body] = paragraphs
     articles << article
+end
+
+# Create the output folder if necessary
+dirname = "../data/"
+unless File.directory?(dirname)
+  FileUtils.mkdir_p(dirname)
 end
 
 # Save the articles to a json file
