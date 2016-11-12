@@ -21,11 +21,12 @@ for i in 0..number_of_articles-1 do
 	paragraphs = doc.summary.split("\n").reject { |s| s.empty? }
 
     article[:title] = doc.title
+    article[:link] = doc.fullurl
     article[:body] = paragraphs
     articles << article
 end
 
 # Save the articles to a json file
-File.open("../data/articles_wikipedia.json", "w") do |f|
+File.open("../data/summaries_wikipedia.json", "w") do |f|
     f.write(articles.to_json)
 end

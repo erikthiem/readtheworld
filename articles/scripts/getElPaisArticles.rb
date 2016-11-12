@@ -59,6 +59,7 @@ links.each do |link|
         end
 
         article[:title] = article_title
+        article[:link] = link
         article[:body] = paragraphs
 
         articles << article
