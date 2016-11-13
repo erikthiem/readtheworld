@@ -1,17 +1,7 @@
 require 'sinatra'
 
-class Article
-
-    def getText
-        # TODO: Implement this
-        "article text"
-    end
-
-    def getDifficulty
-        # TODO: Implement this
-        "article difficulty"
-    end
-
+get "/" do
+    erb :index
 end
 
 get "/article/:id" do |id|
