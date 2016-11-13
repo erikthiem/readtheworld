@@ -1,5 +1,7 @@
 require 'sinatra'
 
+@title = "Read the World"
+
 get "/" do
     erb :index
 end
