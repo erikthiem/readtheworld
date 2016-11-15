@@ -1,7 +1,6 @@
 # This script combines all files in the data folder
 
 require 'json'
-require 'pp'
 
 data_directory = "../data/"
 
