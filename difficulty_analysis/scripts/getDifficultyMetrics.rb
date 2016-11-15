@@ -1,8 +1,9 @@
 # This script gets reading level difficulty metrics for articles
 
+require_relative("metrics/averageWordsPerSentence")
+
 require 'json'
 require 'pragmatic_segmenter'
-require 'pp'
 
 data_directory = "../data/"
 input_file = "unparsed.json"
@@ -25,25 +26,8 @@ articles.each do |article|
 
     metrics = {}
 
-    # Metric: Get average sentence length
-    separator = PragmaticSegmenter::Segmenter.new(text: text, language: 'es')
-    sentences = separator.segment
-
-    sum = 0.0
-    sentences.each do |sentence|
-        sentence_length = sentence.split(" ").length
-        sum += sentence_length
-    end
-
-    number_of_sentences = sentences.length
-
-    if (number_of_sentences == 0)
-        average = 0
-    else
-        average = sum / number_of_sentences
-    end
-
-    metrics[:average_sentence_length] = average.round(3)
+    # Metric: Get average words per sentence
+    metrics[:average_sentence_length] = averageWordsPerSentence(text)
 
     article[:metrics] = metrics
 
