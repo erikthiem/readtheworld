@@ -32,8 +32,6 @@ def percentCommonWords(text)
         percentCommon = 0.000
     end
 
-    puts percentCommon
-
     return percentCommon
 
 end
