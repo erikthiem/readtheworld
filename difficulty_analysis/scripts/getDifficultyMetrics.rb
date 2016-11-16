@@ -1,6 +1,7 @@
 # This script gets reading level difficulty metrics for articles
 
 require_relative("metrics/averageWordsPerSentence")
+require_relative("metrics/percentCommonWords")
 
 require 'json'
 require 'pragmatic_segmenter'
@@ -28,6 +29,10 @@ articles.each do |article|
 
     # Metric: Get average words per sentence
     metrics[:average_sentence_length] = averageWordsPerSentence(text)
+
+    # Metric: Get the percentage of words that are common words
+
+    metrics[:percent_common_words] = percentCommonWords(text)
 
     article[:metrics] = metrics
 
