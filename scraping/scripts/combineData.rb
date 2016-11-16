@@ -18,7 +18,11 @@ all_articles = []
 # Create a new combined data hash
 data_hashes.each do |data_hash|
     data_hash.each do |article|
-        all_articles << article
+
+        # Disregard empty articles
+        if (!article["body"].empty?)
+            all_articles << article
+        end
     end
 end
 
